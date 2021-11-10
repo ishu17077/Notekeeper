@@ -30,7 +30,7 @@ class NoteDetailState extends State<NoteDetail> {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle textStyle = Theme.of(context).textTheme.subhead;
+    TextStyle textStyle = Theme.of(context).textTheme.headline6;
 
     titleController.text = note.title;
     descriptionController.text = note.description;

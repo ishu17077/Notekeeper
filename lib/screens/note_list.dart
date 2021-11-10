@@ -27,7 +27,7 @@ class NoteListState extends State<NoteList> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Notes'),
-        backgroundColor: Colors.deepPurple ,
+        backgroundColor: Colors.deepPurple,
       ),
       body: getNoteListView(),
       floatingActionButton: FloatingActionButton(
@@ -43,7 +43,7 @@ class NoteListState extends State<NoteList> {
   }
 
   ListView getNoteListView() {
-    TextStyle titleStyle = Theme.of(context).textTheme.subhead;
+    TextStyle titleStyle = Theme.of(context).textTheme.headline6;
 
     return ListView.builder(
       itemCount: count,
@@ -62,7 +62,6 @@ class NoteListState extends State<NoteList> {
               style: titleStyle,
             ),
             subtitle: Text(this.noteList[position].date),
-
             trailing: GestureDetector(
               child: Icon(
                 Icons.delete,
@@ -122,7 +121,7 @@ class NoteListState extends State<NoteList> {
 
   void _showSnackBar(BuildContext context, String message) {
     final snackBar = SnackBar(content: Text(message));
-    Scaffold.of(context).showSnackBar(snackBar);
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
   void navigateToDetail(Note note, String title) async {
