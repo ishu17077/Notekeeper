@@ -20,7 +20,7 @@ class NoteListState extends State<NoteList> {
   @override
   Widget build(BuildContext context) {
     if (noteList == null) {
-      noteList = List<Note>();
+      noteList = <Note>[];
       updateListView();
     }
 

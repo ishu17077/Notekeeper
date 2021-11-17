@@ -39,6 +39,7 @@ class NoteDetailState extends State<NoteDetail> {
         onWillPop: () {
           // Write some code to control things, when user press Back navigation button in device navigationBar
           moveToLastScreen();
+          return;
         },
         child: Scaffold(
           appBar: AppBar(
