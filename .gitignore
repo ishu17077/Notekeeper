@@ -8,9 +8,9 @@
 .buildlog/
 .history
 .svn/
-build
-android/.cxx
-android/app/build
+/build
+/android/.cxx
+/android/app/build
 
 
 # IntelliJ related
