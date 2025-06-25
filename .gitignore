@@ -9,8 +9,8 @@
 .history
 .svn/
 /build
-/android/.cxx
-/android/app/build
+/android/app/.cxx/
+/android/app/build/
 
 
 # IntelliJ related
