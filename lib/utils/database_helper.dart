@@ -18,10 +18,11 @@ class DatabaseHelper {
   DatabaseHelper._createInstance(); // Named constructor to create instance of DatabaseHelper
 
   factory DatabaseHelper() {
-//    // if (_databaseHelper == null) {
-//    // 	_databaseHelper = DatabaseHelper._createInstance(); // This is executed only once, singleton object
-//    // }
-    return _databaseHelper ?? DatabaseHelper._createInstance();
+    if (_databaseHelper == null) {
+      _databaseHelper = DatabaseHelper
+          ._createInstance(); // This is executed only once, singleton object
+    }
+    return _databaseHelper!;
   }
 
   Future<Database> get database async {

@@ -11,11 +11,11 @@
       "fieldsDescending": {}
     },
     "memoizedSize": -1,
-    "memoizedHashCode": -397235264
+    "memoizedHashCode": 829776211
   },
   {
     "level_": 0,
-    "message_": "rebuilding JSON /home/ishukumar5663/AndroidStudioProjects/Notekeeper/android/app/.cxx/Debug/p43o1e29/x86/android_gradle_build.json due to:",
+    "message_": "JSON \u0027/home/ishukumar5663/AndroidStudioProjects/Notekeeper/android/app/.cxx/Debug/p43o1e29/x86/android_gradle_build.json\u0027 was up-to-date",
     "file_": "/home/ishukumar5663/flutter/packages/flutter_tools/gradle/src/main/scripts/CMakeLists.txt",
     "tag_": "debug|x86",
     "diagnosticCode_": 0,
@@ -25,133 +25,7 @@
       "fieldsDescending": {}
     },
     "memoizedSize": -1,
-    "memoizedHashCode": 1040887275
-  },
-  {
-    "level_": 0,
-    "message_": "- expected json /home/ishukumar5663/AndroidStudioProjects/Notekeeper/android/app/.cxx/Debug/p43o1e29/x86/android_gradle_build.json file is not present, will remove stale json folder",
-    "file_": "/home/ishukumar5663/flutter/packages/flutter_tools/gradle/src/main/scripts/CMakeLists.txt",
-    "tag_": "debug|x86",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {},
-      "fieldsDescending": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 1871634293
-  },
-  {
-    "level_": 0,
-    "message_": "- missing previous command file /home/ishukumar5663/AndroidStudioProjects/Notekeeper/android/app/.cxx/Debug/p43o1e29/x86/metadata_generation_command.txt, will remove stale json folder",
-    "file_": "/home/ishukumar5663/flutter/packages/flutter_tools/gradle/src/main/scripts/CMakeLists.txt",
-    "tag_": "debug|x86",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {},
-      "fieldsDescending": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 798179699
-  },
-  {
-    "level_": 0,
-    "message_": "- command changed from previous, will remove stale json folder",
-    "file_": "/home/ishukumar5663/flutter/packages/flutter_tools/gradle/src/main/scripts/CMakeLists.txt",
-    "tag_": "debug|x86",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {},
-      "fieldsDescending": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 2063894364
-  },
-  {
-    "level_": 0,
-    "message_": "created folder \u0027/home/ishukumar5663/AndroidStudioProjects/Notekeeper/android/app/.cxx/Debug/p43o1e29/x86\u0027",
-    "file_": "/home/ishukumar5663/flutter/packages/flutter_tools/gradle/src/main/scripts/CMakeLists.txt",
-    "tag_": "debug|x86",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {},
-      "fieldsDescending": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": -867194826
-  },
-  {
-    "level_": 0,
-    "message_": "executing cmake /home/ishukumar5663/Android/Sdk/cmake/3.18.1/bin/cmake \\\n  -H/home/ishukumar5663/flutter/packages/flutter_tools/gradle/src/main/scripts \\\n  -DCMAKE_SYSTEM_NAME\u003dAndroid \\\n  -DCMAKE_EXPORT_COMPILE_COMMANDS\u003dON \\\n  -DCMAKE_SYSTEM_VERSION\u003d21 \\\n  -DANDROID_PLATFORM\u003dandroid-21 \\\n  -DANDROID_ABI\u003dx86 \\\n  -DCMAKE_ANDROID_ARCH_ABI\u003dx86 \\\n  -DANDROID_NDK\u003d/home/ishukumar5663/Android/Sdk/ndk/23.1.7779620 \\\n  -DCMAKE_ANDROID_NDK\u003d/home/ishukumar5663/Android/Sdk/ndk/23.1.7779620 \\\n  -DCMAKE_TOOLCHAIN_FILE\u003d/home/ishukumar5663/Android/Sdk/ndk/23.1.7779620/build/cmake/android.toolchain.cmake \\\n  -DCMAKE_MAKE_PROGRAM\u003d/home/ishukumar5663/Android/Sdk/cmake/3.18.1/bin/ninja \\\n  -DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003d/home/ishukumar5663/AndroidStudioProjects/Notekeeper/android/app/build/intermediates/cxx/Debug/p43o1e29/obj/x86 \\\n  -DCMAKE_RUNTIME_OUTPUT_DIRECTORY\u003d/home/ishukumar5663/AndroidStudioProjects/Notekeeper/android/app/build/intermediates/cxx/Debug/p43o1e29/obj/x86 \\\n  -DCMAKE_BUILD_TYPE\u003dDebug \\\n  -B/home/ishukumar5663/AndroidStudioProjects/Notekeeper/android/app/.cxx/Debug/p43o1e29/x86 \\\n  -GNinja \\\n  -Wno-dev \\\n  --no-warn-unused-cli\n",
-    "file_": "/home/ishukumar5663/flutter/packages/flutter_tools/gradle/src/main/scripts/CMakeLists.txt",
-    "tag_": "debug|x86",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {},
-      "fieldsDescending": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 694795114
-  },
-  {
-    "level_": 0,
-    "message_": "/home/ishukumar5663/Android/Sdk/cmake/3.18.1/bin/cmake \\\n  -H/home/ishukumar5663/flutter/packages/flutter_tools/gradle/src/main/scripts \\\n  -DCMAKE_SYSTEM_NAME\u003dAndroid \\\n  -DCMAKE_EXPORT_COMPILE_COMMANDS\u003dON \\\n  -DCMAKE_SYSTEM_VERSION\u003d21 \\\n  -DANDROID_PLATFORM\u003dandroid-21 \\\n  -DANDROID_ABI\u003dx86 \\\n  -DCMAKE_ANDROID_ARCH_ABI\u003dx86 \\\n  -DANDROID_NDK\u003d/home/ishukumar5663/Android/Sdk/ndk/23.1.7779620 \\\n  -DCMAKE_ANDROID_NDK\u003d/home/ishukumar5663/Android/Sdk/ndk/23.1.7779620 \\\n  -DCMAKE_TOOLCHAIN_FILE\u003d/home/ishukumar5663/Android/Sdk/ndk/23.1.7779620/build/cmake/android.toolchain.cmake \\\n  -DCMAKE_MAKE_PROGRAM\u003d/home/ishukumar5663/Android/Sdk/cmake/3.18.1/bin/ninja \\\n  -DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003d/home/ishukumar5663/AndroidStudioProjects/Notekeeper/android/app/build/intermediates/cxx/Debug/p43o1e29/obj/x86 \\\n  -DCMAKE_RUNTIME_OUTPUT_DIRECTORY\u003d/home/ishukumar5663/AndroidStudioProjects/Notekeeper/android/app/build/intermediates/cxx/Debug/p43o1e29/obj/x86 \\\n  -DCMAKE_BUILD_TYPE\u003dDebug \\\n  -B/home/ishukumar5663/AndroidStudioProjects/Notekeeper/android/app/.cxx/Debug/p43o1e29/x86 \\\n  -GNinja \\\n  -Wno-dev \\\n  --no-warn-unused-cli\n",
-    "file_": "/home/ishukumar5663/flutter/packages/flutter_tools/gradle/src/main/scripts/CMakeLists.txt",
-    "tag_": "debug|x86",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {},
-      "fieldsDescending": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": -719513943
-  },
-  {
-    "level_": 0,
-    "message_": "/home/ishukumar5663/AndroidStudioProjects/Notekeeper/android/app/.cxx/Debug/p43o1e29/x86/compile_commands.json.bin existed but not /home/ishukumar5663/AndroidStudioProjects/Notekeeper/android/app/.cxx/Debug/p43o1e29/x86/compile_commands.json",
-    "file_": "/home/ishukumar5663/flutter/packages/flutter_tools/gradle/src/main/scripts/CMakeLists.txt",
-    "tag_": "debug|x86",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {},
-      "fieldsDescending": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": -1513592919
-  },
-  {
-    "level_": 0,
-    "message_": "done executing cmake",
-    "file_": "/home/ishukumar5663/flutter/packages/flutter_tools/gradle/src/main/scripts/CMakeLists.txt",
-    "tag_": "debug|x86",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {},
-      "fieldsDescending": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 1751548113
-  },
-  {
-    "level_": 0,
-    "message_": "write command file /home/ishukumar5663/AndroidStudioProjects/Notekeeper/android/app/.cxx/Debug/p43o1e29/x86/metadata_generation_command.txt",
-    "file_": "/home/ishukumar5663/flutter/packages/flutter_tools/gradle/src/main/scripts/CMakeLists.txt",
-    "tag_": "debug|x86",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {},
-      "fieldsDescending": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 1019777909
+    "memoizedHashCode": -1172275499
   },
   {
     "level_": 0,
@@ -165,6 +39,6 @@
       "fieldsDescending": {}
     },
     "memoizedSize": -1,
-    "memoizedHashCode": -605346099
+    "memoizedHashCode": 621665376
   }
 ]

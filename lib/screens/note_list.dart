@@ -1,9 +1,10 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notekeeper/models/note.dart';
 import 'package:notekeeper/screens/note_detail.dart';
+import 'package:notekeeper/state_management/note/note_bloc.dart';
+import 'package:notekeeper/state_management/note_list/note_list_cubit.dart';
 import 'package:notekeeper/utils/database_helper.dart';
-import 'package:sqflite/sqflite.dart';
 
 class NoteList extends StatefulWidget {
   @override
@@ -14,16 +15,21 @@ class NoteList extends StatefulWidget {
 
 class NoteListState extends State<NoteList> {
   DatabaseHelper databaseHelper = DatabaseHelper();
-  late List<Note> noteList;
-  int count = 0;
+  List<Note>? noteList;
+  late final NoteListCubit _noteListCubit;
+  late final NoteBloc _noteBloc;
+  @override
+  void initState() {
+    // TODO: implement initState
+    _noteBloc = context.read<NoteBloc>();
+    _noteListCubit = context.read<NoteListCubit>();
+    _noteListCubit.getNotes();
+    notedialogs();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    if (noteList == null) {
-      noteList = <Note>[];
-      updateListView();
-    }
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Notes'),
@@ -42,43 +48,44 @@ class NoteListState extends State<NoteList> {
     );
   }
 
-  ListView getNoteListView() {
+  Widget getNoteListView() {
     TextStyle? titleStyle = Theme.of(context).textTheme.headlineMedium;
 
-    return ListView.builder(
-      itemCount: count,
-      itemBuilder: (BuildContext context, int position) {
-        return Card(
-          color: Theme.of(context).primaryColor,
-          elevation: 2.0,
-          child: ListTile(
-            leading: CircleAvatar(
-              backgroundColor:
-                  getPriorityColor(this.noteList[position].priority),
-              child: getPriorityIcon(this.noteList[position].priority),
-            ),
-            title: Text(
-              this.noteList[position].title,
-              style: titleStyle,
-            ),
-            subtitle: Text(this.noteList[position].date),
-            trailing: GestureDetector(
-              child: Icon(
-                Icons.delete,
-                color: Colors.grey,
+    return BlocBuilder<NoteListCubit, List<Note>>(builder: (context, notes) {
+      return ListView.builder(
+        itemCount: notes.length,
+        itemBuilder: (BuildContext context, int position) {
+          return Card(
+            color: Theme.of(context).primaryColor,
+            elevation: 2.0,
+            child: ListTile(
+              leading: CircleAvatar(
+                backgroundColor: getPriorityColor(notes[position].priority),
+                child: getPriorityIcon(notes[position].priority),
+              ),
+              title: Text(
+                notes[position].title,
+                style: titleStyle,
+              ),
+              subtitle: Text(notes[position].date),
+              trailing: GestureDetector(
+                child: Icon(
+                  Icons.delete,
+                  color: Colors.grey,
+                ),
+                onTap: () {
+                  _delete(context, notes[position]);
+                },
               ),
               onTap: () {
-                _delete(context, noteList[position]);
+                debugPrint("ListTile Tapped");
+                navigateToDetail(notes[position], 'Edit Note');
               },
             ),
-            onTap: () {
-              debugPrint("ListTile Tapped");
-              navigateToDetail(this.noteList[position], 'Edit Note');
-            },
-          ),
-        );
-      },
-    );
+          );
+        },
+      );
+    });
   }
 
   // Returns the priority color
@@ -110,10 +117,15 @@ class NoteListState extends State<NoteList> {
   }
 
   void _delete(BuildContext context, Note note) async {
-    int result = await databaseHelper.deleteNote(note.id);
-    if (result != 0) {
-      _showSnackBar(context, 'Note Deleted Successfully');
-      updateListView();
+    if (note.id != null) {
+      _noteBloc.add(NoteEvent.deleteNote(note));
+
+      // _showSnackBar(context, 'Note Deleted Successfully');
+      // int result = await databaseHelper.deleteNote(note.id ?? 1);
+      // if (result != 0) {
+      //   _showSnackBar(context, 'Note Deleted Successfully');
+      //   //// _noteListCubit.getNotes();
+      // }
     }
   }
 
@@ -127,22 +139,18 @@ class NoteListState extends State<NoteList> {
         await Navigator.push(context, MaterialPageRoute(builder: (context) {
       return NoteDetail(note, title);
     }));
-
-    if (result == true) {
-      updateListView();
-    }
+    //// if (result == true) {
+    ////   _noteListCubit.getNotes();
+    ////}
   }
 
-  void updateListView() {
-    final Future<Database> dbFuture = databaseHelper.initializeDatabase();
-    dbFuture.then((database) {
-      Future<List<Note>> noteListFuture = databaseHelper.getNoteList();
-      noteListFuture.then((noteList) {
-        setState(() {
-          this.noteList = noteList;
-          this.count = noteList.length;
-        });
-      });
+  void notedialogs() {
+    _noteBloc.stream.listen((event) {
+      if (event is NoteDeleteSuccess) {
+        _showSnackBar(context, "Note Delete Success");
+      } else if (event is NoteAddSuccess) {
+        _showSnackBar(context, "Note Added Success");
+      }
     });
   }
 }

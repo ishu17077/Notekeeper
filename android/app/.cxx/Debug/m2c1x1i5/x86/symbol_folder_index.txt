@@ -1,0 +1,1 @@
+/home/ishukumar5663/AndroidStudioProjects/Notekeeper/android/app/build/intermediates/cxx/Debug/m2c1x1i5/obj/x86

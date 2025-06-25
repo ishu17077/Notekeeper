@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:notekeeper/models/note.dart';
+import 'package:notekeeper/state_management/note/note_bloc.dart';
 import 'package:notekeeper/utils/database_helper.dart';
 
 class NoteDetail extends StatefulWidget {
@@ -18,7 +20,7 @@ class NoteDetail extends StatefulWidget {
 class NoteDetailState extends State<NoteDetail> {
   static var _priorities = ['High', 'Low'];
 
-  DatabaseHelper helper = DatabaseHelper();
+  late final NoteBloc _noteBloc;
 
   String appBarTitle;
   Note note;
@@ -29,6 +31,12 @@ class NoteDetailState extends State<NoteDetail> {
   NoteDetailState(this.note, this.appBarTitle);
 
   @override
+  void initState() {
+    _noteBloc = context.read<NoteBloc>();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     TextStyle? textStyle = Theme.of(context).textTheme.headlineMedium;
 
@@ -36,9 +44,12 @@ class NoteDetailState extends State<NoteDetail> {
     descriptionController.text = note.description;
 
     return PopScope(
+        canPop: false,
         onPopInvokedWithResult: (didPop, result) {
           // Write some code to control things, when user press Back navigation button in device navigationBar
-          moveToLastScreen();
+          if (!didPop) {
+            moveToLastScreen();
+          }
         },
         child: Scaffold(
           appBar: AppBar(
@@ -215,18 +226,10 @@ class NoteDetailState extends State<NoteDetail> {
     int result;
     if (note.id != null) {
       // Case 1: Update operation
-      result = await helper.updateNote(note);
+      _noteBloc.add(NoteUpdate(note));
     } else {
       // Case 2: Insert Operation
-      result = await helper.insertNote(note);
-    }
-
-    if (result != 0) {
-      // Success
-      _showAlertDialog('Status', 'Note Saved Successfully');
-    } else {
-      // Failure
-      _showAlertDialog('Status', 'Problem Saving Note');
+      _noteBloc.add(NoteEvent.addNote(note));
     }
   }
 
@@ -241,11 +244,14 @@ class NoteDetailState extends State<NoteDetail> {
     }
 
     // Case 2: User is trying to delete the old note that already has a valid ID.
-    int result = await helper.deleteNote(note.id);
-    if (result != 0) {
-      _showAlertDialog('Status', 'Note Deleted Successfully');
-    } else {
-      _showAlertDialog('Status', 'Error Occured while Deleting Note');
+    if (note.id != null) {
+      _noteBloc.add(NoteEvent.deleteNote(note));
+      //// int result = await helper.deleteNote(note.id ?? 1);
+      // //if (result != 0) {
+      // //  _showAlertDialog('Status', 'Note Deleted Successfully');
+      //// } else {
+      ////   _showAlertDialog('Status', 'Error Occured while Deleting Note');
+      //// }
     }
   }
 

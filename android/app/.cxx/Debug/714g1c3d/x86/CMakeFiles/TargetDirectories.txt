@@ -1,0 +1,2 @@
+/home/ishukumar5663/AndroidStudioProjects/Notekeeper/android/app/.cxx/Debug/714g1c3d/x86/CMakeFiles/edit_cache.dir
+/home/ishukumar5663/AndroidStudioProjects/Notekeeper/android/app/.cxx/Debug/714g1c3d/x86/CMakeFiles/rebuild_cache.dir
