@@ -8,14 +8,18 @@ part 'note_state.dart';
 
 class NoteBloc extends Bloc<NoteEvent, NoteState> {
   late final DatabaseHelper _databaseHelper = DatabaseHelper();
-  final NoteListCubit _noteListCubit = NoteListCubit();
+  final NoteListCubit _noteListCubit;
 
-  NoteBloc() : super(NoteInitial()) {
-    on<NoteAdd>((event, emit) async {
+  NoteBloc(this._noteListCubit) : super(NoteInitial()) {
+    on<NoteAdd>((NoteAdd event, Emitter<NoteState> emit) async {
       emit(NoteLoading(event.note));
-      if ((await _databaseHelper.insertNote(event.note)) != 0) {
-        _noteListCubit.getNotes();
+      int noteId = (await _databaseHelper.insertNote(event.note));
+      if (noteId != 0) {
+        _noteListCubit.addNote(Note.withId(noteId, event.note.title,
+            event.note.date, event.note.priority, event.note.description));
         emit(NoteState.noteAdded(event.note));
+
+        // _noteListCubit.getNotes();
         return;
       }
       emit(NoteAddFailed(event.note));
@@ -28,9 +32,11 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
         return;
       }
 
-      if ((await _databaseHelper.deleteNote(event.note.id ?? 1)) != 0) {
+      if ((await _databaseHelper.deleteNote(event.note.id!)) != 0) {
+        _noteListCubit.deleteNote(event.note);
         emit(NoteState.noteDeleted(event.note));
-        _noteListCubit.getNotes();
+
+        // _noteListCubit.getNotes();
         return;
       }
       emit(NoteDeleteFailed(event.note));

@@ -119,13 +119,6 @@ class NoteListState extends State<NoteList> {
   void _delete(BuildContext context, Note note) async {
     if (note.id != null) {
       _noteBloc.add(NoteEvent.deleteNote(note));
-
-      // _showSnackBar(context, 'Note Deleted Successfully');
-      // int result = await databaseHelper.deleteNote(note.id ?? 1);
-      // if (result != 0) {
-      //   _showSnackBar(context, 'Note Deleted Successfully');
-      //   //// _noteListCubit.getNotes();
-      // }
     }
   }
 

@@ -9,12 +9,13 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  NoteListCubit _noteListCubit = NoteListCubit();
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => NoteListCubit()),
-        BlocProvider(create: (context) => NoteBloc()),
+        BlocProvider(create: (context) => _noteListCubit),
+        BlocProvider(create: (context) => NoteBloc(_noteListCubit)),
       ],
       child: MaterialApp(
           title: 'NoteKeeper',
