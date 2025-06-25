@@ -14,7 +14,7 @@ class NoteList extends StatefulWidget {
 
 class NoteListState extends State<NoteList> {
   DatabaseHelper databaseHelper = DatabaseHelper();
-  List<Note> noteList;
+  late List<Note> noteList;
   int count = 0;
 
   @override
@@ -43,7 +43,7 @@ class NoteListState extends State<NoteList> {
   }
 
   ListView getNoteListView() {
-    TextStyle titleStyle = Theme.of(context).textTheme.headline6;
+    TextStyle? titleStyle = Theme.of(context).textTheme.headlineMedium;
 
     return ListView.builder(
       itemCount: count,
@@ -86,10 +86,9 @@ class NoteListState extends State<NoteList> {
     switch (priority) {
       case 1:
         return Colors.red;
-        break;
+
       case 2:
         return Colors.yellow;
-        break;
 
       default:
         return Colors.yellow;
@@ -101,10 +100,9 @@ class NoteListState extends State<NoteList> {
     switch (priority) {
       case 1:
         return Icon(Icons.play_arrow);
-        break;
+
       case 2:
         return Icon(Icons.keyboard_arrow_right);
-        break;
 
       default:
         return Icon(Icons.keyboard_arrow_right);

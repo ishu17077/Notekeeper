@@ -30,16 +30,15 @@ class NoteDetailState extends State<NoteDetail> {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle textStyle = Theme.of(context).textTheme.headline6;
+    TextStyle? textStyle = Theme.of(context).textTheme.headlineMedium;
 
     titleController.text = note.title;
     descriptionController.text = note.description;
 
-    return WillPopScope(
-        onWillPop: () {
+    return PopScope(
+        onPopInvokedWithResult: (didPop, result) {
           // Write some code to control things, when user press Back navigation button in device navigationBar
           moveToLastScreen();
-          return;
         },
         child: Scaffold(
           appBar: AppBar(
@@ -58,7 +57,7 @@ class NoteDetailState extends State<NoteDetail> {
               children: <Widget>[
                 // First element
                 ListTile(
-                  title: DropdownButton(
+                  title: DropdownButton<String>(
                       items: _priorities.map((String dropDownStringItem) {
                         return DropdownMenuItem<String>(
                           value: dropDownStringItem,
@@ -70,7 +69,7 @@ class NoteDetailState extends State<NoteDetail> {
                       onChanged: (valueSelectedByUser) {
                         setState(() {
                           debugPrint('User selected $valueSelectedByUser');
-                          updatePriorityAsInt(valueSelectedByUser);
+                          updatePriorityAsInt(valueSelectedByUser ?? 'High');
                         });
                       }),
                 ),
@@ -117,12 +116,16 @@ class NoteDetailState extends State<NoteDetail> {
                   child: Row(
                     children: <Widget>[
                       Expanded(
-                        child: RaisedButton(
-                          color: Colors.deepPurple,
-                          textColor: Theme.of(context).primaryColorDark,
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor:
+                                  WidgetStatePropertyAll(Colors.deepPurple),
+                              textStyle: WidgetStatePropertyAll(TextStyle(
+                                color: Theme.of(context).primaryColorDark,
+                              ))),
                           child: Text(
                             'Save',
-                            textScaleFactor: 1.2,
+                            textScaler: TextScaler.linear(1.2),
                           ),
                           onPressed: () {
                             setState(() {
@@ -136,12 +139,16 @@ class NoteDetailState extends State<NoteDetail> {
                         width: 5.0,
                       ),
                       Expanded(
-                        child: RaisedButton(
-                          color: Theme.of(context).primaryColor,
-                          textColor: Theme.of(context).primaryColorDark,
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor: WidgetStatePropertyAll(
+                                  Theme.of(context).primaryColor),
+                              textStyle: WidgetStatePropertyAll(TextStyle(
+                                color: Theme.of(context).primaryColorDark,
+                              ))),
                           child: Text(
                             'Delete',
-                            textScaleFactor: 1.2,
+                            textScaler: TextScaler.linear(1.2),
                           ),
                           onPressed: () {
                             setState(() {
@@ -178,7 +185,7 @@ class NoteDetailState extends State<NoteDetail> {
 
   // Convert int priority to String priority and display it to user in DropDown
   String getPriorityAsString(int value) {
-    String priority;
+    String priority = "Low";
     switch (value) {
       case 1:
         priority = _priorities[0]; // 'High'
