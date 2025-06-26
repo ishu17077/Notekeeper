@@ -10,7 +10,7 @@
   },
   "cxxBuildFolder": "/home/ishukumar5663/AndroidStudioProjects/Notekeeper/android/app/.cxx/Debug/m2c1x1i5/x86",
   "soFolder": "/home/ishukumar5663/AndroidStudioProjects/Notekeeper/android/app/build/intermediates/cxx/Debug/m2c1x1i5/obj/x86",
-  "soRepublishFolder": "/home/ishukumar5663/AndroidStudioProjects/Notekeeper/android/app/build/intermediates/cmake/profile/obj/x86",
+  "soRepublishFolder": "/home/ishukumar5663/AndroidStudioProjects/Notekeeper/android/app/build/intermediates/cmake/debug/obj/x86",
   "abiPlatformVersion": 21,
   "cmake": {
     "effectiveConfiguration": {
@@ -25,7 +25,7 @@
     ],
     "cFlagsList": [],
     "cppFlagsList": [],
-    "variantName": "profile",
+    "variantName": "debug",
     "isDebuggableEnabled": true,
     "validAbiList": [
       "armeabi-v7a",

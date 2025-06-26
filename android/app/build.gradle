@@ -58,6 +58,9 @@ android {
         }
     }
     namespace 'notekeeper.notekeeper'
+    buildFeatures{
+        buildConfig = true
+    }
 }
 
 flutter {
